@@ -1,0 +1,49 @@
+<h1>坊间</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>开始时间</th>
+      <th>结束时间</th>
+      <th>时长</th>
+      <th>花费(元)</th>
+      <th>点餐</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.start_time %></td>
+        
+        <% if order.end_time.nil? %>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><%= button_to '结账', checkout_order_path(order), method: :get %></td>
+          <td><%= button_to '点餐', add_item_order_path(order), method: :get %></td>
+ 
+        <% else %>
+          <td><%= order.end_time %></td>
+          <td>
+          <%= order.difftime / 60 %>小时
+          <%= order.difftime % 60 %>分钟 
+          </td>
+          <td><%= order.cost %></td>
+          <td></td>
+          <td>已结账</td>
+          <td></td>
+        <% end %>
+        <td><%= button_to '删除', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '创建新单', new_order_path %>
