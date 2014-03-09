@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20140307152552) do
   end
 
   create_table "products", force: true do |t|
-    t.integer  "price"
     t.string   "name"
+    t.integer  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

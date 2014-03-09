@@ -4,11 +4,11 @@ Fangjian::Application.routes.draw do
     member do
       get :checkout
       get :add_item
-      get :delete_item
+      post :create_item
     end
   end
   root to: 'orders#index'
-  
+  match '/orders/:id/delete_item/:item_id', to: 'orders#delete_item', via: 'delete'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :price %><br>
-    <%= f.number_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label "名字" %><br>
     <%= f.text_field :name %>
   </div>
+  <div class="field">
+    <%= f.label '价格' %><br>
+    <%= f.number_field :price %>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "提交"%>
   </div>
 <% end %>

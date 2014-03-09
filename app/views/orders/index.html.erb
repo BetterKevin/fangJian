@@ -22,7 +22,11 @@
         <% if order.end_time.nil? %>
           <td></td>
           <td></td>
-          <td></td>
+          <td>
+            <% order.products.zip(order.order_items).each do |product, order_item| %>
+              <%= product.name %> * <%= order_item. amount %> 
+            <% end %>
+          </td>
           <td></td>
           <td><%= button_to '结账', checkout_order_path(order), method: :get %></td>
           <td><%= button_to '点餐', add_item_order_path(order), method: :get %></td>
@@ -33,8 +37,12 @@
           <%= order.difftime / 60 %>小时
           <%= order.difftime % 60 %>分钟 
           </td>
+          <td>
+            <% order.products.zip(order.order_items).each do |product, order_item| %>
+              <%= product.name %> * <%= order_item. amount %> 
+            <% end %>
+          </td>
           <td><%= order.cost %></td>
-          <td></td>
           <td>已结账</td>
           <td></td>
         <% end %>
@@ -47,3 +55,4 @@
 <br>
 
 <%= link_to '创建新单', new_order_path %>
+<%= link_to '菜单' , products_path%>
