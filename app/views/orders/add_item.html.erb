@@ -5,7 +5,7 @@
     <%= f.select :product_id, Product.all.collect {|p| [ p.name, p.id ] }, { include_blank: "菜单" } %>
   
     <%= f.label "数量" %>
-    <%= f.text_field :amount %>
+    <%= f.number_field :amount %>
   </div>
   <%= f.submit "创建" %>
 <% end %>

@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140307152552) do
 
   create_table "products", force: true do |t|
     t.string   "name"
-    t.integer  "price"
+    t.float    "price"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

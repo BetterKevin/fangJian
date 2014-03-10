@@ -13,7 +13,7 @@ class Order < ActiveRecord::Base
   def self.time_price(time_difference, wday, hour, minute)
 
     if wday == 0 || wday == 6
-      if hour >= 18 || (hour < 8) || (hour == 8 && minute <= 30 )
+      if hour >= 18 || (hour < 8) || (hour == 8 && minute < 30 )
         if time_difference <= 60
           return 8
         else
@@ -31,7 +31,7 @@ class Order < ActiveRecord::Base
         end
       end
     else
-      if hour >= 18 || (hour < 8) || (hour == 8 && minute <= 30 )
+      if hour >= 18 || (hour < 8) || (hour == 8 && minute < 30 )
         if time_difference <= 60
           return 6
         else
