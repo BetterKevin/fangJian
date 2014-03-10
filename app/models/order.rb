@@ -51,5 +51,6 @@ class Order < ActiveRecord::Base
     end
     
   end
+  default_scope { order(created_at: :asc) }
   
 end
