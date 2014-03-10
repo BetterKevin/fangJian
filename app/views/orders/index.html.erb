@@ -24,7 +24,7 @@
           <td></td>
           <td>
             <% order.products.zip(order.order_items).each do |product, order_item| %>
-              <%= product.name %> * <%= order_item. amount %> 
+              <span title = <%= product.price %>> <%= product.name %></span> * <%= order_item. amount %> 
             <% end %>
           </td>
           <td></td>
