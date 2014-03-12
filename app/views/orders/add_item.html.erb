@@ -1,10 +1,10 @@
+<% provide(:title, "坊间｜点餐") %>
 <h1>点餐</h1>
-
 <%= form_for @order_item, url: { controller: "orders", action: "create_item" } do |f| %>
   <div>  
     <%= f.select :product_id, Product.all.collect {|p| [ p.name, p.id ] }, { include_blank: "菜单" } %>
   
-    <%= f.label "数量" %>
+    <%= f.label :amount, '数量' %>
     <%= f.number_field :amount %>
   </div>
   <%= f.submit "创建" %>

@@ -1,4 +1,4 @@
-module OrdersHelper
+module OrdersDef
   def products_price(order_products, order_items)
     sum = 0
     order_products.zip(order_items).each do |product, order_item|

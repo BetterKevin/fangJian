@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Fangjian::Application.config.secret_key_base = '16f66e817370cb838ea664d85b452102e40d1bb2f64ea0cdc61f5cef3010c302b3b7ab3ff89457575767b64a886715ad74bf7b2aa13ab8520e677f8a47e63de2'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+Fangjian::Application.config.secret_key_base = secure_token
+

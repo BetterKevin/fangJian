@@ -1,58 +1,61 @@
+<% provide(:title, "坊间") %>
 <h1>坊间</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>开始时间</th>
-      <th>结束时间</th>
-      <th>时长</th>
-      <th>点餐</th>
-      <th>花费(元)</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-hover">
+    <thead>
       <tr>
-        <td><%= order.start_time %></td>
-        
-        <% if order.end_time.nil? %>
-          <td></td>
-          <td></td>
-          <td>
-            <% order.products.zip(order.order_items).each do |product, order_item| %>
-              <span title = <%= product.price %>> <%= product.name %></span> * <%= order_item. amount %> 
-            <% end %>
-          </td>
-          <td></td>
-          <td><%= button_to '结账', checkout_order_path(order), method: :get %></td>
-          <td><%= button_to '点餐', add_item_order_path(order), method: :get %></td>
- 
-        <% else %>
-          <td><%= order.end_time %></td>
-          <td>
-          <%= order.difftime / 60 %>小时
-          <%= order.difftime % 60 %>分钟 
-          </td>
-          <td>
-            <% order.products.zip(order.order_items).each do |product, order_item| %>
-              <span title = <%= product.price %>> <%= product.name %></span> * <%= order_item. amount %> 
-            <% end %>
-          </td>
-          <td><%= order.cost %></td>
-          <td>已结账</td>
-          <td></td>
-        <% end %>
-        <td><%= button_to '删除', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>开始时间</th>
+        <th>结束时间</th>
+        <th>时长</th>
+        <th>点餐</th>
+        <th>花费(元)</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+  
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.start_time %></td>
+
+          <% if order.end_time.nil? %>
+            <td></td>
+            <td></td>
+            <td>
+              <% order.products.zip(order.order_items).each do |product, order_item| %>
+                <span title = <%= product.price %>> <%= product.name %></span> * <%= order_item. amount %> 
+              <% end %>
+            </td>
+            <td></td>
+            <td><%= link_to '结账', checkout_order_path(order), class: "btn btn-primary btn-block btn-sm" %></td>
+            <td><%= link_to '点餐', add_item_order_path(order), class: "btn btn-primary btn-block btn-sm" %></td>
+   
+          <% else %>
+            <td><%= order.end_time %></td>
+            <td>
+            <%= order.difftime / 60 %>小时
+            <%= order.difftime % 60 %>分钟 
+            </td>
+            <td>
+              <% order.products.zip(order.order_items).each do |product, order_item| %>
+                <span title = <%= product.price %>> <%= product.name %></span> * <%= order_item. amount %> 
+              <% end %>
+            </td>
+            <td><%= order.cost %></td>
+            <td>已结账</td>
+            <td></td>
+          <% end %>
+          <td><%= link_to '删除', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-block btn-sm" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 
-<%= link_to '创建新单', new_order_path %>
-<%= link_to '菜单' , products_path%>
+<%= link_to '创建新单', new_order_path, class: "btn btn-primary btn-sm" %>
+<%= link_to '菜单' , products_path, class: "btn btn-primary btn-sm"%>
