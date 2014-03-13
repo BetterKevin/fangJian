@@ -12,13 +12,6 @@ describe Order do
 
   it { should be_valid}
 
-  describe "when difftime is less than 0" do
-    before { @order.difftime = -1 }
-
-    it { should_not be_valid }
-    
-  end
-
   describe "some testing examples" do
     before { visit orders_path }
      
