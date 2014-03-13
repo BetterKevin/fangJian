@@ -78,20 +78,21 @@ class OrdersController < ApplicationController
 
   def add_item
     @order_item = @order.order_items.build 
-    @order.product_cost = products_price(@order.products, @order.order_items)
   end
 
   def create_item
-    @order_item = @order.order_items.build(order_item_params)
-    @exist_order_item_with_same_product_id = @order.order_items.find_by product_id: @order_item.product_id
+    @exist_order_item_with_same_product_id = @order.order_items.find_by product_id: params[:order_item][:product_id]
     if @exist_order_item_with_same_product_id.nil?
+      @order_item = @order.order_items.build(order_item_params)
       @order_item.save
     else
-      if @order_item.amount.to_i > 0
-        @exist_order_item_with_same_product_id.amount += @order_item.amount
+      if params[:order_item][:amount].to_i > 0
+        @exist_order_item_with_same_product_id.amount += params[:order_item][:amount].to_i
         @exist_order_item_with_same_product_id.save
       end
     end
+    @order.product_cost = products_price(@order.products, @order.order_item_params)
+    @order.save
 
     redirect_to action: :add_item
   end
