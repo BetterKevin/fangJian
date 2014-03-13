@@ -7,7 +7,10 @@ module OrdersDef
     sum
   end
 
-  def time_price(time_difference, wday, hour, minute)
+  def time_price(time_difference, start_time)
+    wday   = start_time.wday
+    hour   = start_time.hour
+    minute = start_time.min
 
     if wday == 0 || wday == 6
       if hour >= 18 || (hour < 8) || (hour == 8 && minute < 30 )

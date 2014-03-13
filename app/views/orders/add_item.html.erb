@@ -1,17 +1,32 @@
 <% provide(:title, "坊间｜点餐") %>
 <h1>点餐</h1>
 <%= form_for @order_item, url: { controller: "orders", action: "create_item" } do |f| %>
-  <div>  
-    <%= f.select :product_id, Product.all.collect {|p| [ p.name, p.id ] }, { include_blank: "菜单" } %>
-  
-    <%= f.label :amount, '数量' %>
-    <%= f.number_field :amount %>
-  </div>
+  <%= f.select :product_id, Product.all.collect {|p| [ p.name, p.id ] }, { include_blank: "菜单"} %>
+  <%= f.label :amount, '数量' %>
+  <%= f.number_field :amount %>
   <%= f.submit "创建" %>
 <% end %>
 
-<% @order.products.zip(@order.order_items).each do |product, order_item| %>
-  <p><%= product.name %>*<%= order_item.amount %><%= link_to '删除', "/orders/#{order_item.order_id}/delete_item/#{order_item.id}", method: :delete %></p> 
-<% end %>
+<table class='table table-striped table-hover'>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>数量</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
 
-<%= link_to '返回', orders_path %>
+    <% @order.products.zip(@order.order_items).each do |product, order_item| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= order_item.amount %></td>
+        <td><%= link_to '删除', "/orders/#{order_item.order_id}/delete_item/#{order_item.id}", method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="pull-right">
+  <%= link_to '返回', orders_path %>
+</div>

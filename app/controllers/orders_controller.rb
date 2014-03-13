@@ -58,7 +58,9 @@ class OrdersController < ApplicationController
   def checkout
     @order.end_time = DateTime.now.strftime('%Y-%m-%d %a %H:%M:%S')
     @order.difftime = ((DateTime.parse(@order.end_time) - DateTime.parse(@order.start_time)) * 24 * 60).to_i
-    @order.cost = time_price(@order.difftime, @order.start_time.to_datetime.wday, @order.start_time.to_datetime.hour, @order.start_time.to_datetime.min) + products_price(@order.products, @order.order_items)
+    @order.time_cost = time_price(@order.difftime, @order.start_time.to_datetime)
+    @order.product_cost = products_price(@order.products, @order.order_items)
+    @order.total_cost = @order.time_cost + @order.product_cost 
 
     @order.save
     redirect_to orders_url
@@ -76,7 +78,7 @@ class OrdersController < ApplicationController
 
   def add_item
     @order_item = @order.order_items.build 
-    @products = Product.all
+    @order.product_cost = products_price(@order.products, @order.order_items)
   end
 
   def create_item
@@ -85,11 +87,12 @@ class OrdersController < ApplicationController
     if @exist_order_item_with_same_product_id.nil?
       @order_item.save
     else
-      if @order_item.amount > 0
+      if @order_item.amount.to_i > 0
         @exist_order_item_with_same_product_id.amount += @order_item.amount
         @exist_order_item_with_same_product_id.save
       end
     end
+
     redirect_to action: :add_item
   end
 

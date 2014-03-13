@@ -1,21 +1,11 @@
 require 'spec_helper'
 
 describe "Orders" do
-  describe "Add_item Page" do
-    let(:order) { FactoryGirl.create(:order) }
-    subject { page }
-    before { visit add_item_order_path(order) }
-
-    it { should have_title("坊间｜点餐") }
-
-    describe "with invalid information" do
-      before do 
-        fill_in "数量", with: 1
-      end
-
-      it "should not create a order item" do
-        expect { click_button "创建" }.not_to change(OrderItem, :count).by(1)
-      end
+  describe "GET /orders" do
+    it "works! (now write some real specs)" do
+      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
+      get orders_path
+      response.status.should be(200)
     end
   end
 end
