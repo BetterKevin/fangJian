@@ -1,12 +1,9 @@
 class Order < ActiveRecord::Base
   has_many :order_items, dependent: :destroy
   has_many :products, through: :order_items 
-  # validates :start_time, presence: true
 
   default_scope { order(created_at: :desc) }  
 
-  # @order = Order.first
-  # @order.time_price
   def time_price
     difftime = diff_time # call method 'diff_time'
     stime = start_time.to_datetime

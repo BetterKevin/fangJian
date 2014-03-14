@@ -56,10 +56,7 @@ class OrdersController < ApplicationController
 
   def checkout
     @order.end_time = DateTime.now.strftime('%Y-%m-%d %a %H:%M:%S')
-    #@order.difftime = ((DateTime.parse(@order.end_time) - DateTime.parse(@order.start_time)) * 24 * 60).to_i
-    #@order.time_cost = time_price(@order)
     @order.time_cost = @order.time_price
-    # binding.pry    
     @order.product_cost = @order.products_price
     @order.total_cost = @order.time_cost + @order.product_cost 
 
