@@ -39,13 +39,14 @@
         <% else %>
           <td><%= order.end_time %></td>
           <td>
-          <%= order.difftime / 60 %>小时
-          <%= order.difftime % 60 %>分钟 
+          <% diff_time = order.diff_time %>
+          <%= diff_time / 60 %>小时
+          <%= diff_time % 60 %>分钟 
           </td>
           <td><%= order.time_cost %></td>
           <td>
             <% order.products.zip(order.order_items).each do |product, order_item| %>
-              <span title = <%= product.price %>> <%= product.name %></span> * <%= order_item. amount %> 
+              <span title = <%= product.price %>> <%= product.name %></span> * <%= order_item.amount %> 
             <% end %>
           </td>
           <td><%= order.product_cost %></td>
