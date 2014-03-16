@@ -56,9 +56,9 @@ class OrdersController < ApplicationController
 
   def checkout
     @order.end_time = DateTime.now.strftime('%Y-%m-%d %a %H:%M:%S')
-    @order.time_cost = @order.time_price
-    @order.product_cost = @order.products_price
-    @order.total_cost = @order.time_cost + @order.product_cost 
+    # @order.time_cost = @order.time_price
+    # @order.product_cost = @order.products_price
+    # @order.total_cost = @order.time_cost + @order.product_cost 
 
     @order.save
     redirect_to orders_url
@@ -67,11 +67,13 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
+    # binding.pry
     @order.destroy
     respond_to do |format|
       format.html { redirect_to orders_url }
       format.json { head :no_content }
     end
+    # binding.pry
   end
 
   def add_item
@@ -89,7 +91,7 @@ class OrdersController < ApplicationController
         @exist_order_item_with_same_product_id.save
       end
     end
-    @order.product_cost = @order.products_price
+    # @order.product_cost = @order.products_price
     # binding.pry
     @order.save
 

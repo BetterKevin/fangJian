@@ -7,9 +7,6 @@ describe Order do
 
   it { should respond_to(:start_time) }
   it { should respond_to(:end_time) }
-  it { should respond_to(:time_cost) }
-  it { should respond_to(:product_cost) }
-  it { should respond_to(:total_cost) }
 
   it { should be_valid}
 
