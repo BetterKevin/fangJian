@@ -2,20 +2,18 @@ require 'spec_helper'
 require 'pry'
 
 describe Order do
-  before { @order = Order.new(start_time: "2014-3-11 8:29:59", end_time: "2014-3-11 8:30:00", difftime: 1, time_cost: 4) }
 
-  subject { @order }
+  subject { @order = Order.new }
 
   it { should respond_to(:start_time) }
   it { should respond_to(:end_time) }
-  it { should respond_to(:difftime) }
   it { should respond_to(:time_cost) }
+  it { should respond_to(:product_cost) }
+  it { should respond_to(:total_cost) }
 
   it { should be_valid}
 
   describe "#time_price" do # time_price is a instance method
-    before {
-    }
     context "weekdays" do
       context "between 8:30 to 18:00" do
         it "should return correct price" do

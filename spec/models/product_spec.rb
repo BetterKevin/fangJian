@@ -12,14 +12,13 @@ describe Product do
   describe "when name is not present" do
     before { @product.name = ''}
     it { should_not be_valid }
-    
   end
+
   describe "when name is not unique" do
     before do
       product_with_same_name = @product.dup
       product_with_same_name.save
     end
-
     it { should_not be_valid }
     
   end

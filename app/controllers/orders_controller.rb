@@ -90,7 +90,7 @@ class OrdersController < ApplicationController
       end
     end
     @order.product_cost = @order.products_price
-    binding.pry
+    # binding.pry
     @order.save
 
     redirect_to action: :add_item
