@@ -63,13 +63,11 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
-    # binding.pry
     @order.destroy
     respond_to do |format|
       format.html { redirect_to orders_url }
       format.json { head :no_content }
     end
-    # binding.pry
   end
 
   def add_item

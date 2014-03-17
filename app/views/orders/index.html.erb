@@ -38,9 +38,9 @@
               <%= products_cost %>
             <% end %>
           <td></td>
-          <td><%= link_to '编辑', edit_order_path(order) %></td>
-          <td><%= link_to '结账', checkout_order_path(order) %></td>
-          <td><%= link_to '点餐', add_item_order_path(order) %></td>
+          <td><%= link_to '编辑', edit_order_path(order), class: 'btn btn-default btn-xs' %></td>
+          <td><%= link_to '结账', checkout_order_path(order), class: 'btn btn-default btn-xs' %></td>
+          <td><%= link_to '点餐', add_item_order_path(order), class: 'btn btn-default btn-xs' %></td>
  
         <% else %>
           <td><%= order.end_time %></td>
@@ -65,7 +65,7 @@
           <td>已结账</td>
           <td></td>
         <% end %>
-        <td><%= link_to '删除', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '删除', order, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -74,6 +74,6 @@
 
 <br>
 <div class="pull-right">
-  <%= link_to '创建新单', new_order_path %>
-  <%= link_to '菜单' , products_path %>
+  <%= link_to '创建新单', new_order_path, class: 'btn btn-default' %>
+  <%= link_to '菜单' , products_path, class: 'btn btn-default' %>
 </div>

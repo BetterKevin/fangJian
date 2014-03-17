@@ -1,11 +1,15 @@
 require 'spec_helper'
 
 describe "Orders" do
-  before { @order = Order.create }
   subject { page }
 
   describe "Edit Page" do
-    before { visit edit_order_path(@order) }
+    before do
+      @order = Order.create
+      visit edit_order_path(@order)
+    end
+
     it { should have_content("编辑账单") }
   end
+
 end
