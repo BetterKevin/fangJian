@@ -21,8 +21,8 @@ class OrdersController < ApplicationController
   end
 
   # GET /orders/1/edit
-  # def edit
-  # end
+  def edit
+  end
 
   # POST /orders
   # POST /orders.json
@@ -42,24 +42,20 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @order.update(order_params)
-  #       format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-  #       format.json { head :no_content }
-  #     else
-  #       format.html { render action: 'edit' }
-  #       format.json { render json: @order.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    respond_to do |format|
+      if @order.update(order_params)
+        format.html { redirect_to action: :index }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   def checkout
     @order.end_time = DateTime.now.strftime('%Y-%m-%d %a %H:%M:%S')
-    # @order.time_cost = @order.time_price
-    # @order.product_cost = @order.products_price
-    # @order.total_cost = @order.time_cost + @order.product_cost 
-
     @order.save
     redirect_to orders_url
   end
@@ -91,10 +87,7 @@ class OrdersController < ApplicationController
         @exist_order_item_with_same_product_id.save
       end
     end
-    # @order.product_cost = @order.products_price
-    # binding.pry
     @order.save
-
     redirect_to action: :add_item
   end
 

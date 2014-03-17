@@ -14,6 +14,7 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -37,6 +38,7 @@
               <%= products_cost %>
             <% end %>
           <td></td>
+          <td><%= link_to '编辑', edit_order_path(order) %></td>
           <td><%= link_to '结账', checkout_order_path(order) %></td>
           <td><%= link_to '点餐', add_item_order_path(order) %></td>
  
@@ -59,6 +61,7 @@
             <% products_cost = order.products_price %>
             <%= products_cost %></td>
           <td><%= products_cost + time_cost %></td>
+          <td></td>
           <td>已结账</td>
           <td></td>
         <% end %>
