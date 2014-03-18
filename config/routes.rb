@@ -9,7 +9,8 @@ Fangjian::Application.routes.draw do
   end
   root to: 'orders#index'
   match '/orders/:id/delete_item/:item_id', to: 'orders#delete_item', via: 'delete'
-
+  match '/orders/:id/add/:item_id', to: 'orders#add', via: 'get'
+  match '/orders/:id/minus/:item_id', to: 'orders#minus', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -23,7 +23,7 @@
     <% @order.products.zip(@order.order_items).each do |product, order_item| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= order_item.amount %></td>
+        <td><%= link_to ' - ', "/orders/#{order_item.order_id}/minus/#{order_item.id}" %><%= order_item.amount %><%= link_to ' + ', "/orders/#{order_item.order_id}/add/#{order_item.id}" %></td>
         <td><%= link_to '删除', "/orders/#{order_item.order_id}/delete_item/#{order_item.id}", method: :delete, class: 'btn btn-default btn-xs' %></td>
       </tr>
     <% end %>

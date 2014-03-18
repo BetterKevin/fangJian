@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy, :checkout, :add_item, :delete_item, :create_item]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :checkout, :add_item, :delete_item, :create_item, :add, :minus]
 
   # GET /orders
   # GET /orders.json
@@ -71,7 +71,7 @@ class OrdersController < ApplicationController
   end
 
   def add_item
-    @order_item = @order.order_items.build 
+    @order_item = @order.order_items.build
   end
 
   def create_item
@@ -91,11 +91,31 @@ class OrdersController < ApplicationController
 
   def delete_item
     @order_item = @order.order_items.find(params[:item_id])
+    binding.pry
     @order_item.destroy
 
     redirect_to action: :add_item
   end
 
+  def add
+    @order_item = @order.order_items.find(params[:item_id])
+    # binding.pry
+    @order_item.amount += 1
+    @order_item.save
+    # binding.pry
+
+    redirect_to action: :add_item
+  end
+
+  def minus
+    @order_item = @order.order_items.find(params[:item_id])
+    # binding.pry
+    @order_item.amount -= 1
+    @order_item.save
+    # binding.pry
+
+    redirect_to action: :add_item
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
