@@ -19,6 +19,8 @@
       </tr>
     </thead>
 
+
+
     <tbody>
       <% @orders.each do |order| %>
         <tr>
@@ -71,4 +73,7 @@
       <% end %>
     </tbody>
   </table>
+  <div class='paginate-container'>
+    <%= will_paginate %>
+  </div>
 </div>
