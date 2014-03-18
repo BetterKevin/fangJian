@@ -28,8 +28,8 @@
           <td></td>
           <td></td>
           <td>
-            <% order.products.zip(order.order_items).each do |product, order_item| %>
-              <span title = <%= product.price %>> <%= product.name %></span> * <%= order_item. amount %> 
+            <% order.order_items.each do |order_item| %>
+              <span title = <%= order_item.product.price %>> <%= order_item.product.name %></span> * <%= order_item.amount %>
             <% end %>
           </td>
           <td>
@@ -41,20 +41,20 @@
           <td><%= link_to '编辑', edit_order_path(order), class: 'btn btn-default btn-xs' %></td>
           <td><%= link_to '结账', checkout_order_path(order), class: 'btn btn-default btn-xs' %></td>
           <td><%= link_to '点餐', add_item_order_path(order), class: 'btn btn-default btn-xs' %></td>
- 
+
         <% else %>
           <td><%= order.end_time %></td>
           <td>
           <% diff_time = order.diff_time %>
           <%= diff_time / 60 %>小时
-          <%= diff_time % 60 %>分钟 
+          <%= diff_time % 60 %>分钟
           </td>
           <td>
             <% time_cost = order.time_price %>
             <%= time_cost %></td>
           <td>
             <% order.order_items.each do |order_item| %>
-              <span title = <%= order_item.product.price %>> <%= order_item.product.name %></span> * <%= order_item.amount %> 
+              <span title = <%= order_item.product.price %>> <%= order_item.product.name %></span> * <%= order_item.amount %>
             <% end %>
           </td>
           <td>
