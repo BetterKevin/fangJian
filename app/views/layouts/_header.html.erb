@@ -1,0 +1,15 @@
+<header class="navbar navbar-fixed-top navbar-inverse" role='navigation'>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to '坊间', orders_path, id: 'logo' %>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to '创建新单', new_order_path %></li>
+        <li><%= link_to '创建新菜',new_product_path %></li>
+        <li><%= link_to "主页",    orders_path %></li>
+        <li><%= link_to "菜单",    products_path %></li>
+      </ul>
+    </div>
+  </div>
+</header>
