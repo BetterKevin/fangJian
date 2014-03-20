@@ -1,6 +1,9 @@
 @import "bootstrap";
 
 //The basic text style
+body {
+  background-image: url(body-background.jpg)
+}
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
@@ -21,9 +24,34 @@ p {
   line-height: 1.7em;
 }
 
+.table-responsive {
+  box-shadow: 0px 0px 30px 5px #888888;
+  margin-top: 80px;
+  margin-bottom: 100px;
+  padding: 0px;
+}
+
+.box-shadow {
+  background-color: #ECF0F1;
+  text-align: center;
+  opacity: 0.8;
+}
+
+th {
+  text-align: center;
+}
+
 // for header
+header {
+  background-image: url(body-background.jpg);
+  box-shadow: 0px 3px 10px #888888;
+}
+
 .nav li {
   font-size: 1.1em;
+  &:hover {
+    color: black;
+  }
 }
 
 #logo {
@@ -32,22 +60,17 @@ p {
   margin-left: 30px;
   vertical-align: middle;
   font-size: 2.5em;
-  color: #fff;
+  color: black;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
   text-decoration: underline;
   &:hover {
-    color: blue;
+    background-image: url(body-background.jpg);
+    color: black;
     text-decoration: none;
   }
-}
-
-// for orders and products page
-.table-responsive {
-  margin-top: 60px;
-  margin-bottom: 60px;
 }
 
 // the new-product page and edit-product
@@ -91,8 +114,9 @@ p {
   bottom: 0;
   width: 100%;
   height: 60px;
-  background-color: #f5f5f5;
-  .text-muted {
+  background-image: url(body-background.jpg);
+  box-shadow: 0px -1px 10px #888888;
+  .footer-text {
     padding-top: 20px;
     padding-right: 20px;
     font-size: 1.5em;
