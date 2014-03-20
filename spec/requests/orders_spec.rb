@@ -9,7 +9,7 @@ describe "Orders" do
       visit edit_order_path(@order)
     end
 
-    it { should have_content("编辑账单") }
+    it { should have_content("编辑开始时间") }
   end
 
 end
