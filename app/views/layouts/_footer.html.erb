@@ -1,4 +1,10 @@
 <footer class="footer">
   <p class="footer-text pull-right">在坊间享受你的时间
+
+  <% if params[:action] === 'index' %>
+    <div class='paginate-container'>
+      <%= will_paginate %>
+    </div>
+  <% end %>
 </footer>
 </p>
