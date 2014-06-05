@@ -1,0 +1,14 @@
+cn:
+  activerecord:
+    errors:
+      messages:
+        blank: "不能为空"
+        greater_than: "必须大于0"
+        taken: "已被使用"
+        not_a_number: "不是一个数字"
+    models:
+      product: "新菜"
+    attributes:
+      product:
+        name: "菜名"
+        price: "价格"

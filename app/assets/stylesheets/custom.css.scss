@@ -13,7 +13,7 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 0px;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 0;
 }
 
 
@@ -85,7 +85,7 @@ header {
 
 // the new-product page and edit-product
 .margintop {
-  margin-top: 150px;
+  margin-top: 100px;
   width: 300px;
   .btn-primary {
     height: 45px;
@@ -147,4 +147,8 @@ header {
 #new_order_item {
   margin-top: 20px;
   margin-bottom: 70px;
+}
+
+.field_with_errors {
+  width: 300px;
 }
