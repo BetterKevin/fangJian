@@ -1,4 +1,6 @@
 Fangjian::Application.routes.draw do
+  resources :categories
+
   resources :products
   resources :orders do
     member do
