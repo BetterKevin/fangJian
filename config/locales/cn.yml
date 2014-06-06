@@ -13,6 +13,7 @@ cn:
       product:
         name: "菜名"
         price: "价格"
+        category_id: "种类"
       category:
         name: "种类名"
 

@@ -53,17 +53,26 @@ header {
 .container-fluid {
   margin-top: 10px;
 }
-.nav li {
-  font-size: 1.5em;
+
+#fat-menu {
+  font-size: 1.4em;
+}
+
+.dropdown-toggle {
+  color: #5f6666 !important;
+}
+
+.wxt {
+  font-size: 1.4em;
 
   a {
-    color: #f5f5f5;
     &:hover {
      color: #f5f5d5;
-     background: none;
+     background: none !important;
     }
   }
 }
+
 
 #logo {
   float: left;
@@ -155,4 +164,7 @@ header {
 
 #category_name {
   height: 50px;
+}
+
+.today_order {
 }

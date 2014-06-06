@@ -1,4 +1,5 @@
 Fangjian::Application.routes.draw do
+  get "statistic/index"
   resources :categories
 
   resources :products

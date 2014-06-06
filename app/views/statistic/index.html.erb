@@ -1,0 +1,31 @@
+<div class="today_order center-block">
+  <div>
+    今日有<%= @today_orders.count %>人消费。
+  </div>
+  <div>
+    共入账<%= @total_cost %>元
+  </div>
+  <div>
+    有<%= @jiezhang.count %>人已结账
+  </div>
+  <div>
+    有<%= @today_orders.count - @jiezhang.count %>人还未结账
+  </div>
+
+  <% @products.each do |product| %>
+    <div>
+      有<%= product.order_items.count %>人点了<%= product.name %>
+    </div>
+  <% end %>
+
+  <% i = 0 %>
+  <% @today_orders.each do |order| %>
+    <% if order.products_price != 0 %>
+      <% @num = @num + 1 %>
+    <% end %>
+  <% end %>
+
+  <div>
+    有<%= @num %>个点了餐，<%= @today_orders.count - @num %>个没有点餐
+  </div>
+</div>

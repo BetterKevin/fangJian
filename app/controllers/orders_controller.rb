@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy, :checkout, :add_item, :delete_item, :create_item, :add, :minus]
+  before_filter :authenticate
 
   # GET /orders
   # GET /orders.json
@@ -125,5 +126,12 @@ class OrdersController < ApplicationController
 
     def order_item_params
       params.require(:order_item).permit(:product_id, :amount, :order_id)
+    end
+
+  protected
+    def authenticate
+      authenticate_or_request_with_http_basic do |username, password|
+        username == "fangjian" && password == "fangjian"
+      end
     end
 end

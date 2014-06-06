@@ -5,12 +5,25 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "主页", orders_path %></li>
-        <li><%= link_to '创建新单', new_order_path %></li>
-        <li><%= link_to "菜单", products_path %></li>
-        <li><%= link_to '创建新菜', new_product_path %></li>
-        <li><%= link_to "种类", categories_path %></li>
-        <li><%= link_to '创建新种类', new_category_path %></li>
+        <li id="fat-menu" class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          统计 <b class="caret"></b>
+        </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "今日账单", statistic_index_path %></li>
+            <li><%= link_to "Settings", '#' %></li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to "Sign out", method: "delete" %>
+            </li>
+          </ul>
+        </li>
+        <li class="wxt"><%= link_to "主页", orders_path %></li>
+        <li class="wxt"><%= link_to '创建新单', new_order_path %></li>
+        <li class="wxt"><%= link_to "菜单", products_path %></li>
+        <li class="wxt"><%= link_to '创建新菜', new_product_path %></li>
+        <li class="wxt"><%= link_to "种类", categories_path %></li>
+        <li class="wxt"><%= link_to '创建新种类', new_category_path %></li>
       </ul>
     </div>
   </div>
