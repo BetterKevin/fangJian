@@ -80,7 +80,7 @@ describe Order do
     context "5份6元车仔面, 30元" do
       it "should return correct price" do
         order = Order.create
-        product = Product.create(name: "车仔面", price: 6) 
+        product = Product.create(name: "车仔面", price: 6, category_id: 1)
         order_item = OrderItem.create(amount: 5, order_id: order.id, product_id: product.id)
         expect(order.products_price).to eq(30)
       end
@@ -93,7 +93,7 @@ describe Order do
         context "一份车仔面" do
           it "should return correct price" do
             order = Order.create(start_time: "2014-3-14 18:00:00", end_time: "2014-3-14 22:00:00")
-            product = Product.create(name: "车仔面", price: 6) 
+            product = Product.create(name: "车仔面", price: 6, category_id: 1)
             order_item = OrderItem.create(amount: 1, order_id: order.id, product_id: product.id)
             expect(order.products_price + order.time_price).to eq(21)
           end
@@ -108,7 +108,7 @@ describe Order do
         context "五份车仔面" do
           it "should return correct price" do
             order = Order.create(start_time: "2014-3-14 18:00:00", end_time: "2014-3-14 22:00:00")
-            product = Product.create(name: "车仔面", price: 6) 
+            product = Product.create(name: "车仔面", price: 6, category_id: 1)
             order_item = OrderItem.create(amount: 5, order_id: order.id, product_id: product.id)
             expect(order.products_price + order.time_price).to eq(45)
           end
@@ -123,8 +123,8 @@ describe Order do
         context "五份车仔面,三份乌冬面" do
           it "should return correct price" do
             order = Order.create(start_time: "2014-3-14 18:00:00", end_time: "2014-3-14 22:00:00")
-            product = Product.create(name: "车仔面", price: 6) 
-            product2 = Product.create(name: "乌冬面", price: 7)
+            product = Product.create(name: "车仔面", price: 6, category_id: 1)
+            product2 = Product.create(name: "乌冬面", price: 7, category_id: 1)
             order_item = OrderItem.create(amount: 5, order_id: order.id, product_id: product.id)
             order_item = OrderItem.create(amount: 3, order_id: order.id, product_id: product2.id)
             expect(order.products_price + order.time_price).to eq(66)

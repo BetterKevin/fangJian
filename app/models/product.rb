@@ -5,4 +5,5 @@ class Product < ActiveRecord::Base
   validates :price, presence: true, numericality: { greater_than: 0 }
   validates :name, presence: true, uniqueness: true
   validates :category_id, presence: true
+  default_scope { order(created_at: :desc) }
 end

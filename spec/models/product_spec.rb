@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Product do
-  before { @product = Product.new(name: "鸡腿", price: 5) }
+  before { @product = Product.new(name: "鸡腿", price: 5, category_id: 1) }
   subject { @product }
 
   it { should respond_to(:name) }
@@ -20,6 +20,6 @@ describe Product do
       product_with_same_name.save
     end
     it { should_not be_valid }
-    
+
   end
 end
