@@ -1,0 +1,21 @@
+<h1>所有帐单</h1>
+<div class="today_order">
+  <ul>
+    <li>至今共有<%= @orders.count %>人消费。</li>
+    <li>共入账<%= @cost %>元</li>
+    <li>有<%= @checked.count %>人已结账</li>
+    <li>有<%= @orders.count - @checked.count %>人还未结账</li>
+    <% @products.each do |product| %>
+      <li>
+        有<%= product.order_items.count %>人点了<%= product.name %>
+      </li>
+    <% end %>
+    <% @orders.each do |order| %>
+      <% if order.products_price != 0 %>
+        <% @num = @num + 1 %>
+      <% end %>
+    <% end %>
+    <li>有<%= @num %>人点了餐，<%= @orders.count - @num %>人没有点餐</li>
+    <li>有<%= @products.count %>种菜肴，分为<%= @categories.count %>类</li>
+  </ul>
+</div>

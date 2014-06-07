@@ -166,5 +166,13 @@ header {
   height: 50px;
 }
 
-.today_order {
+.today_order, .about-us {
+  margin-top: 40px;
+  ul {
+    padding-left: 500px;
+    font-size: 2em;
+    li {
+      height: 50px;
+    }
+  }
 }

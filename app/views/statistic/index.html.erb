@@ -1,31 +1,20 @@
-<div class="today_order center-block">
-  <div>
-    今日有<%= @today_orders.count %>人消费。
-  </div>
-  <div>
-    共入账<%= @total_cost %>元
-  </div>
-  <div>
-    有<%= @jiezhang.count %>人已结账
-  </div>
-  <div>
-    有<%= @today_orders.count - @jiezhang.count %>人还未结账
-  </div>
-
-  <% @products.each do |product| %>
-    <div>
-      有<%= product.order_items.count %>人点了<%= product.name %>
-    </div>
-  <% end %>
-
-  <% i = 0 %>
-  <% @today_orders.each do |order| %>
-    <% if order.products_price != 0 %>
-      <% @num = @num + 1 %>
+<h1>今日账单</h1>
+<div class="today_order">
+  <ul>
+    <li>今日有<%= @today_orders.count %>人消费。</li>
+    <li>共入账<%= @total_cost %>元</li>
+    <li>有<%= @jiezhang.count %>人已结账</li>
+    <li>有<%= @today_orders.count - @jiezhang.count %>人还未结账</li>
+    <% @products.each do |product| %>
+      <li>
+        有<%= product.orders.where(start_time: (Time.now.midnight..(Time.now.midnight + 1.day))).count %>人点了<%= product.name %>
+      </li>
     <% end %>
-  <% end %>
-
-  <div>
-    有<%= @num %>个点了餐，<%= @today_orders.count - @num %>个没有点餐
-  </div>
+    <% @today_orders.each do |order| %>
+      <% if order.products_price != nil %>
+        <% @num = @num + 1 %>
+      <% end %>
+    <% end %>
+    <li>有<%= @num %>人点了餐，<%= @today_orders.count - @num %>人没有点餐</li>
+  </ul>
 </div>

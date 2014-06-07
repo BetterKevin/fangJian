@@ -6,4 +6,13 @@ class StatisticController < ApplicationController
     @products = Product.all
     @num = 0
   end
+
+  def all
+    @orders = Order.all
+    @checked = @orders.where("end_time != 'nil'")
+    @cost = @checked.inject(0) { |sum, order| sum + (order.time_price + order.products_price) }
+    @products = Product.all
+    @num = 0
+    @categories = Category.all
+  end
 end
